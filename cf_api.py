@@ -46,7 +46,7 @@ class CodeforcesAPI:
                 
                 problem["handle"] = handle
                 
-                if "problem_rating" in y:
+                if "rating" in y:
                     problem["problem_rating"] = y["rating"]
                 else:
                     problem["problem_rating"] = None

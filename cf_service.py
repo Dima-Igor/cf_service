@@ -43,6 +43,7 @@ class CodeforcesService(submission_pb2_grpc.CodeforcesService):
                     problem_index=submission["problem_index"],
                     sub_time=submission["sub_time"],
                     verdict=submission["verdict"],
+                    problem_rating = submission["problem_rating"],
                     status="OK"
                 )
 

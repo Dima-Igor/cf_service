@@ -1,9 +1,4 @@
-from asyncio.windows_events import NULL
-from re import sub
-import aiohttp
-import asyncio
 import requests
-from collections import namedtuple
 import time
 
 class CodeforcesAPI:

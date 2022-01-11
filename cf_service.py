@@ -1,14 +1,8 @@
 from cf_api import CodeforcesAPI
-import asyncio
-import websockets
-import time
-import datetime
-import json
 import grpc
 import submission_pb2
 import submission_pb2_grpc
 from concurrent import futures
-
 
 class CodeforcesService(submission_pb2_grpc.CodeforcesService):
     def __init__(self):

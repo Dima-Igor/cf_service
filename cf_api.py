@@ -1,13 +1,15 @@
 import requests
 import time
 
+
 class CodeforcesAPI:
     def __init__(self):
         pass
-    
+
     def api_response(self, url, params=None):
         try:
             tries = 0
+            sleep_time = 1
             while tries < 5:
                 tries += 1
                 resp = requests.get(url)
@@ -17,11 +19,13 @@ class CodeforcesAPI:
                     response['comment'] = "limit exceeded"
                 else:
                     response = resp.json()
-                
+
                 if response['status'] == 'FAILED' and 'limit exceeded' in response['comment'].lower():
-                    time.sleep(1)
+                    print("Unable to get response from codeforces, trying again")
+                    time.sleep(sleep_time)
                 else:
                     return response
+                sleep_time*=1.5
             return response
         except Exception as e:
             return None
@@ -38,14 +42,14 @@ class CodeforcesAPI:
             for x in response['result']:
                 y = x['problem']
                 problem = {}
-                
+
                 problem["handle"] = handle
-                
+
                 if "rating" in y:
                     problem["problem_rating"] = y["rating"]
                 else:
                     problem["problem_rating"] = None
-                
+
                 if "contestId" in y:
                     problem["contest_id"] = y["contestId"]
                 else:
@@ -71,4 +75,3 @@ class CodeforcesAPI:
         except Exception as e:
             print('hereis exception')
             return [False, str(e)]
-

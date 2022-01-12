@@ -4,13 +4,14 @@ import submission_pb2
 import submission_pb2_grpc
 from concurrent import futures
 
+
 class CodeforcesService(submission_pb2_grpc.CodeforcesService):
     def __init__(self):
         self.cfApi = CodeforcesAPI()
 
     def GetSubmissions(self, request, context):
         status, submissions = self.cfApi.get_user_submissions(request.handle)
-        
+
         if not status:
             print(submissions)
             if submissions == "CF API Error":
@@ -37,7 +38,7 @@ class CodeforcesService(submission_pb2_grpc.CodeforcesService):
                     problem_index=submission["problem_index"],
                     sub_time=submission["sub_time"],
                     verdict=submission["verdict"],
-                    problem_rating = submission["problem_rating"],
+                    problem_rating=submission["problem_rating"],
                     status="OK"
                 )
 

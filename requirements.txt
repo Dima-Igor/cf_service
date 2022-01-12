@@ -4,8 +4,7 @@ python-dotenv~=0.19.2
 gunicorn~=19.6.0
 Flask-SocketIO~=4.3.0
 eventlet~=0.33.0
-requests ~= 2.7.0
-grpcio
+requests
 websockets
 asyncio
 protobuf

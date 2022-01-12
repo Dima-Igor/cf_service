@@ -1,9 +1,8 @@
-FROM python:3.7
+FROM python:3.10.1
 
 RUN mkdir /app
 WORKDIR /app
 ADD . /app/
 RUN pip install -r requirements.txt
-
-EXPOSE 5000
-CMD ["python", "cf_service.py"]
+RUN python -m pip install grpcio
+CMD ["python", "/app/cf_service.py"]
